@@ -15,22 +15,23 @@ class Status: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = "Covid-19 Verileri"
+        
+        setLayout()
+        
         viewModel.delegate = self
         viewModel.getUpComingData()
         
         statusTableView.register(StatusTableViewCell.nibName, forCellReuseIdentifier: StatusTableViewCell.identifier)
         
         
-        statusTableView.separatorEffect = .none
-//        print(viewModel.data.count)
-        
         statusTableView.delegate = self
         statusTableView.dataSource = self
     }
-
+    fileprivate func setLayout(){
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.title = "Covid-19 Verileri"
+        statusTableView.separatorEffect = .none
+    }
 
 }
 
